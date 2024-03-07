@@ -147,3 +147,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
+  UpdateLife: {fileID: 11400000, guid: b22bbc4806ad9ef40a4cba6e0bca646f, type: 2}

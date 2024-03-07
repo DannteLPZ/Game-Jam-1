@@ -1,5 +1,4 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public enum PowerUpType
@@ -13,6 +12,7 @@ public class PowerUp : MonoBehaviour, IPickable
 {
     public PowerUpType type;
     PlayerController playerController;
+    [SerializeField] private GameEvent UpdateLife;
     public void TakeIt()
     {
         Destroy(gameObject);
@@ -22,6 +22,7 @@ public class PowerUp : MonoBehaviour, IPickable
             if (playerController.health < 3)
             {
                 playerController.health++;
+                UpdateLife.Invoke();
             }
         }
     }
