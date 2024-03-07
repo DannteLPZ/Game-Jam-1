@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float forceJump;
     [SerializeField] private float horizontalInput;
+    public bool isOnGround = true;
     private Rigidbody2D playerRigidBody;
 
     void Start()
@@ -24,6 +25,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
+            //isOnGround = false;
             Debug.Log("VERTICAL");
             playerRigidBody.AddForce(Vector2.up * forceJump, ForceMode2D.Impulse);
         }
@@ -34,8 +36,17 @@ public class PlayerController : MonoBehaviour
         {
             // TODO(Johny): handle the jump
             Debug.Log("HORIZONTAL");
-            transform.Translate(Vector2.right * horizontalInput * Time.deltaTime * speed);
+            playerRigidBody.AddForce(Vector2.right * speed * horizontalInput);
+            //transform.Translate(Vector2.right * horizontalInput * Time.deltaTime * speed);
             //playerRigidBody.velocity = new Vector2(horizontalInput, playerRigidBody.velocity.y);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isOnGround = true;
         }
     }
 
