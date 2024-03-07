@@ -16,11 +16,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _groundRadius;
     [SerializeField] private LayerMask _whatIsGround;
 
-    [Header("Health")]
-    [SerializeField] private int _maxHealth;
-    private int _currentHealth;
-    public int CurrentHealth { get { return _currentHealth; } set { _currentHealth = value; } }
-
     private float _horizontalInput;
     private bool isOnGround;
     private bool _wasOnGround;
@@ -36,7 +31,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         _playerRigidBody = GetComponent<Rigidbody2D>();
-        _currentHealth = _maxHealth;
+        
     }
 
     void Update()
