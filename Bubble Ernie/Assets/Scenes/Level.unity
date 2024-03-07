@@ -476,6 +476,7 @@ MonoBehaviour:
   _playerController: {fileID: 1627628838}
   _playerShooter: {fileID: 1627628837}
   _playerRb: {fileID: 1627628840}
+  _spriteRenderer: {fileID: 1347477645}
 --- !u!1 &1422159310
 GameObject:
   m_ObjectHideFlags: 0
