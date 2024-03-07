@@ -84,6 +84,11 @@ public class EnemyPatrol : MonoBehaviour
                 Vector2 normal = collision.contacts[0].normal;
                 playerRb.AddForce(-10.0f * normal, ForceMode2D.Impulse);
             }
+            collision.collider.TryGetComponent(out PlayerHealth player);
+            if(player != null)
+            {
+                player.Heal(-1);
+            }
         }
     }
 

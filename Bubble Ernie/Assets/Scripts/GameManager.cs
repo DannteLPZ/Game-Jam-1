@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         gameplayTime = 120;
+        StartCoroutine(GameplayCountdown());
     }
 
     public void Update()
@@ -47,7 +48,7 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(1f);
             timeRemaining--;
             onTimerUpdate.Invoke();
-            Debug.Log(timeRemaining);
+            //Debug.Log(timeRemaining);
         }
     }
 
