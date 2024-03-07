@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         gameplayTime = 120;
+        StartCoroutine(GameplayCountdown());
     }
 
     public void Update()

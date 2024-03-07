@@ -8,7 +8,12 @@ public class UILives : MonoBehaviour
 {
     [SerializeField] private Sprite[] hearths;
     [SerializeField] private Image[] livesImageDisplay;
-    [SerializeField] private PlayerController player;
+    [SerializeField] private PlayerHealth player;
+
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
+    }
 
     public void UpdateLives()
     {
