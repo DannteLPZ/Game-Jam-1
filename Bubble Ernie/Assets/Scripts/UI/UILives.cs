@@ -12,7 +12,7 @@ public class UILives : MonoBehaviour
 
     public void UpdateLives()
     {
-        int lives = 3; //player.health;
+        int lives = player.CurrentHealth;
 
         switch (lives)
         {
