@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameEvent onTimerUpdate;
     [SerializeField] private GameEvent onGamePause;
     [SerializeField] private GameEvent onGameStart;
+    private int mainSceneID = 0;
+    private int menuSceneID = 1;
 
     private void Awake()
     {
@@ -44,11 +47,13 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(1f);
             timeRemaining--;
             onTimerUpdate.Invoke();
+            Debug.Log(timeRemaining);
         }
     }
 
     public void InitGame()
     {
+        SceneManager.LoadScene(mainSceneID);
         onGameStart.Invoke();
         StartCoroutine(GameplayCountdown());
     }
