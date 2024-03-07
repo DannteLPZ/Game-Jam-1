@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
 {
+    //Animator parameter constants
     private const string VELOCITY_X = "VelocityX";
     private const string VELOCITY_Y = "VelocityY";
-    private const string JUMP = "Jump";
+    private const string JUMPED = "Jumped";
     private const string LANDED = "Landed";
     private const string SHOT = "Shot";
-    private const string DEATH = "Jump";
+    private const string DEATH = "Death";
 
     [SerializeField] private PlayerController _playerController;
     [SerializeField] private PlayerShooter _playerShooter;
-    [SerializeField] private Rigidbody _playerRb;
+    [SerializeField] private Rigidbody2D _playerRb;
 
     private Animator _playerAnimator;
 
@@ -34,11 +35,11 @@ public class PlayerAnimation : MonoBehaviour
     }
     private void Update()
     {
-        _playerAnimator.SetFloat(VELOCITY_X, _playerRb.velocity.x);
+        _playerAnimator.SetFloat(VELOCITY_X, Mathf.Abs(_playerRb.velocity.x));
         _playerAnimator.SetFloat(VELOCITY_Y, _playerRb.velocity.y);
     }
 
-    private void AnimateJump() => _playerAnimator.SetTrigger(JUMP);
+    private void AnimateJump() => _playerAnimator.SetTrigger(JUMPED);
     private void AnimateLand() => _playerAnimator.SetTrigger(LANDED);
     private void AnimateShot() => _playerAnimator.SetTrigger(SHOT);
 
