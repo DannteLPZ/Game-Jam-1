@@ -6,18 +6,28 @@ using static UnityEngine.InputManagerEntry;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float speed;
-    [SerializeField] private float forceJump;
+    [Header("Movement")]
+    [SerializeField] private float _speed;
+    public float Speed { get { return _speed; } set {  _speed = value; } }
+
+    [Header("Jumping")]
+    [SerializeField] private float _jumpForce;
     [SerializeField] private Transform _groundCheck;
     [SerializeField] private float _groundRadius;
     [SerializeField] private LayerMask _whatIsGround;
-    
-    private float horizontalInput;
+
+    [Header("Health")]
+    [SerializeField] private int _maxHealth;
+    private int _currentHealth;
+    public int CurrentHealth { get { return _currentHealth; } set { _currentHealth = value; } }
+
+    private float _horizontalInput;
     private bool isOnGround;
     private bool _wasOnGround;
     private bool _hasJumped;
 
-    private Rigidbody2D playerRigidBody;
+
+    private Rigidbody2D _playerRigidBody;
 
     //DL : Added events for animation
     public event Action OnJumped;
@@ -25,12 +35,13 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        playerRigidBody = GetComponent<Rigidbody2D>();
+        _playerRigidBody = GetComponent<Rigidbody2D>();
+        _currentHealth = _maxHealth;
     }
 
     void Update()
     {
-        horizontalInput = Input.GetAxis("Horizontal");
+        _horizontalInput = Input.GetAxis("Horizontal");
         if (Input.GetKeyDown(KeyCode.UpArrow) == true && _hasJumped == false)
             _hasJumped = true;
     }
@@ -51,10 +62,16 @@ public class PlayerController : MonoBehaviour
     {
         if (_hasJumped == true && isOnGround == true)
         {
-            playerRigidBody.AddForce(Vector2.up * forceJump, ForceMode2D.Impulse);
+            _playerRigidBody.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
             OnJumped?.Invoke();
         }
+        float horizontalForce = (_speed * _horizontalInput) - _playerRigidBody.velocity.x;
+        _playerRigidBody.AddForce(horizontalForce * Vector2.right);
+    }
 
-        playerRigidBody.AddForce(Vector2.right * speed * horizontalInput);
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(_groundCheck.position, _groundRadius);
     }
 }
