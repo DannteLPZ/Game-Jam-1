@@ -1,3 +1,5 @@
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public enum PowerUpType
@@ -6,15 +8,29 @@ public enum PowerUpType
     Life
 }
 
+
 public class PowerUp : MonoBehaviour, IPickable
 {
     public PowerUpType type;
+    PlayerController playerController;
     public void TakeIt()
     {
-       Destroy(gameObject);
+        Destroy(gameObject);
         if (type == PowerUpType.Speed)
-            Debug.Log("add player speed");
+           StartCoroutine(SpeedPowerUp());
         if (type == PowerUpType.Life)
-            Debug.Log("Add player live");
-    }   
+            playerController.health++;
+    }
+
+    private void Start()
+    {
+        playerController = FindObjectOfType<PlayerController>();
+    }
+
+    IEnumerator SpeedPowerUp()
+    {
+        playerController.speed += 5;
+        yield return new WaitForSeconds(5f);
+        playerController.speed -= 5;
+    }
 }
