@@ -1,5 +1,4 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -8,6 +7,9 @@ public class GameManager : MonoBehaviour
     int gameplayTime;
     private float timeRemaining;
     public float TimeRemaining => timeRemaining;
+    [SerializeField] private GameEvent onTimerUpdate;
+    [SerializeField] private GameEvent onGamePause;
+    [SerializeField] private GameEvent onGameStart;
 
     private void Awake()
     {
@@ -36,25 +38,24 @@ public class GameManager : MonoBehaviour
 
     IEnumerator GameplayCountdown()
     {
-        float timeRemaining = gameplayTime;
+        timeRemaining = gameplayTime;
         while (timeRemaining > 0)
         {
-            //enviar valor a UI
             yield return new WaitForSeconds(1f);
             timeRemaining--;
+            onTimerUpdate.Invoke();
         }
-        // El temporizador termina, aqui ponemos los eventos del game over 
     }
 
     public void InitGame()
     {
-        //esto se ejecuta cuando se le da a "Play"
+        onGameStart.Invoke();
         StartCoroutine(GameplayCountdown());
     }
 
     public void Pause()
     {
-
+        onGamePause.Invoke();
     }
 
     public void GameOver()
