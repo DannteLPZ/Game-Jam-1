@@ -17,9 +17,13 @@ public class PowerUp : MonoBehaviour, IPickable
     {
         Destroy(gameObject);
         if (type == PowerUpType.Speed)
-           StartCoroutine(SpeedPowerUp());
-        if (type == PowerUpType.Life)
-            playerController.health++;
+            StartCoroutine(SpeedPowerUp());
+        if (type == PowerUpType.Life) { 
+            if (playerController.health < 3)
+            {
+                playerController.health++;
+            }
+        }
     }
 
     private void Start()

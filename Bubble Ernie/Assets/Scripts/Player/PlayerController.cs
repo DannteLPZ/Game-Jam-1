@@ -6,7 +6,6 @@ using static UnityEngine.InputManagerEntry;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float speed;
     [SerializeField] private float forceJump;
     [SerializeField] private Transform _groundCheck;
     [SerializeField] private float _groundRadius;
@@ -17,6 +16,9 @@ public class PlayerController : MonoBehaviour
     private bool _wasOnGround;
     private bool _hasJumped;
 
+    public int health;
+    public float speed;
+
     private Rigidbody2D playerRigidBody;
 
     //DL : Added events for animation
@@ -26,6 +28,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         playerRigidBody = GetComponent<Rigidbody2D>();
+        health = 3;
     }
 
     void Update()
