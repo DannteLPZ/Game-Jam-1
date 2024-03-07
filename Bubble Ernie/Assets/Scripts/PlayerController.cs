@@ -23,9 +23,9 @@ public class PlayerController : MonoBehaviour
 
     private void PlayerMovements()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.UpArrow) && isOnGround)
         {
-            //isOnGround = false;
+            isOnGround = false;
             Debug.Log("VERTICAL");
             playerRigidBody.AddForce(Vector2.up * forceJump, ForceMode2D.Impulse);
         }
@@ -34,7 +34,6 @@ public class PlayerController : MonoBehaviour
         horizontalInput = Input.GetAxis("Horizontal");
         if (horizontalInput > 0 || horizontalInput < 0)
         {
-            // TODO(Johny): handle the jump
             Debug.Log("HORIZONTAL");
             playerRigidBody.AddForce(Vector2.right * speed * horizontalInput);
             //transform.Translate(Vector2.right * horizontalInput * Time.deltaTime * speed);
@@ -42,7 +41,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter2D (Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
