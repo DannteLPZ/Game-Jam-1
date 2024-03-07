@@ -1,23 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
+public enum PowerUpType
+{
+    Speed,
+    Life
+}
 
 public class PowerUp : MonoBehaviour, IPickable
 {
+    public PowerUpType type;
     public void TakeIt()
     {
        Destroy(gameObject);
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+        if (type == PowerUpType.Speed)
+            Debug.Log("add player speed");
+        if (type == PowerUpType.Life)
+            Debug.Log("Add player live");
+    }   
 }
