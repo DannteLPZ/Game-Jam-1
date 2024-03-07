@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 59af144bb6144ab4daf4c8079e461e51
+guid: c563a58e0ca3aa542bf11691ba007cd9
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -129,7 +129,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Player_Idle_0
+      name: Enemy_Death_0
       rect:
         serializedVersion: 2
         x: 0
@@ -143,14 +143,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eeb1be6c6f56a634ea8a8fa5ba8c61a9
-      internalID: 2146360285
+      spriteID: 81450a973d2d5fa44bf4f2795378c0ce
+      internalID: -1419075414
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_Idle_1
+      name: Enemy_Death_1
       rect:
         serializedVersion: 2
         x: 17
@@ -164,14 +164,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 30bf1fabc9ce1914cb59896ae37035ff
-      internalID: -1445275047
+      spriteID: 7b6c0ef56ad2e5c428b127d32f65cfc2
+      internalID: 416920445
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_Idle_2
+      name: Enemy_Death_2
       rect:
         serializedVersion: 2
         x: 34
@@ -185,14 +185,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b250da5e64e26ef4cb2b9838f6de6c53
-      internalID: 937428026
+      spriteID: 001efcd9854edff40ad59b451fffd794
+      internalID: -846065399
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_Idle_3
+      name: Enemy_Death_3
       rect:
         serializedVersion: 2
         x: 51
@@ -206,8 +206,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b4b80ab3bb212c34c930567fd27b49db
-      internalID: 705098677
+      spriteID: 00f10ba1b443ff24e818a947c8ae82aa
+      internalID: 345254849
       vertices: []
       indices: 
       edges: []
@@ -223,10 +223,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Player_Idle_0: 2146360285
-      Player_Idle_1: -1445275047
-      Player_Idle_2: 937428026
-      Player_Idle_3: 705098677
+      Enemy_Death_0: -1419075414
+      Enemy_Death_1: 416920445
+      Enemy_Death_2: -846065399
+      Enemy_Death_3: 345254849
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

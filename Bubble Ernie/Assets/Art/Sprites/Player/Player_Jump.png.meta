@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 59af144bb6144ab4daf4c8079e461e51
+guid: 4181e6414ef9c09458e0caf50932fdd2
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -129,7 +129,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Player_Idle_0
+      name: Player_Jump_0
       rect:
         serializedVersion: 2
         x: 0
@@ -143,14 +143,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eeb1be6c6f56a634ea8a8fa5ba8c61a9
-      internalID: 2146360285
+      spriteID: bbb53dc661927b74c894af200865cbd3
+      internalID: -1669231355
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_Idle_1
+      name: Player_Jump_1
       rect:
         serializedVersion: 2
         x: 17
@@ -164,50 +164,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 30bf1fabc9ce1914cb59896ae37035ff
-      internalID: -1445275047
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Player_Idle_2
-      rect:
-        serializedVersion: 2
-        x: 34
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b250da5e64e26ef4cb2b9838f6de6c53
-      internalID: 937428026
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Player_Idle_3
-      rect:
-        serializedVersion: 2
-        x: 51
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b4b80ab3bb212c34c930567fd27b49db
-      internalID: 705098677
+      spriteID: 843fe035dfc66bc43b7c99a89b01debc
+      internalID: -1840873149
       vertices: []
       indices: 
       edges: []
@@ -223,10 +181,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Player_Idle_0: 2146360285
-      Player_Idle_1: -1445275047
-      Player_Idle_2: 937428026
-      Player_Idle_3: 705098677
+      Player_Jump_0: -1669231355
+      Player_Jump_1: -1840873149
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
