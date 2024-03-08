@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,14 +9,17 @@ public class EnemyPatrol : MonoBehaviour
     [SerializeField] private float speed = 2f;
     [SerializeField] private Transform wayPoint1, wayPoint2;
     [SerializeField] private Rigidbody2D enemyRb;
-    [SerializeField] private SpriteRenderer sprite;
-    [SerializeField] private BoxCollider2D boxTriggerCollider;
-
-    [SerializeField] private Vector3 movementDirection;
     [SerializeField] private Vector3 targetWayPoint;
+
+    private BoxCollider2D _enemyCollider;
+
+    public Vector3 movementDirection;
+
+    public event Action OnDeath;
 
     private void Start()
     {
+        _enemyCollider = GetComponent<BoxCollider2D>();
         targetWayPoint = wayPoint1.position;
         CalculateAndMoveDirection();
     }
@@ -25,8 +29,7 @@ public class EnemyPatrol : MonoBehaviour
     {
         if (Vector2.Distance(transform.position, targetWayPoint) < .1f)
         {
-            targetWayPoint = targetWayPoint == wayPoint1.position ? wayPoint2.position : wayPoint1.position;
-            
+            targetWayPoint = targetWayPoint == wayPoint1.position ? wayPoint2.position : wayPoint1.position;   
         }
     }
 
@@ -42,27 +45,21 @@ public class EnemyPatrol : MonoBehaviour
         
         //Apply movement to direction
         enemyRb.velocity = movementDirection * speed;
-
-        //Run animator?
-        
-        //Flip enemy sprite
-        if(movementDirection.x > 0)
-        {
-            sprite.flipX = true;
-            boxTriggerCollider.offset = new Vector2(2.2f, boxTriggerCollider.offset.y);
-        }
-        else if(movementDirection.x < 0) 
-        { 
-            sprite.flipX = false;
-            boxTriggerCollider.offset = new Vector2(-2.2f, boxTriggerCollider.offset.y);
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Projectile") == true)
         {
-            speed = 10f;
+            enemyRb.velocity = Vector2.zero;
+            enemyRb.gravityScale = 0.0f;
+            _enemyCollider.enabled = false;
+            OnDeath?.Invoke();
+            Destroy(collision.gameObject);
+            enabled = false;
+        }else if (collision.CompareTag("Player"))
+        {
+            speed = 10.0f;
         }
     }
 
@@ -70,7 +67,7 @@ public class EnemyPatrol : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            speed = 4f;
+            speed = 4.0f;
         }
     }
 
