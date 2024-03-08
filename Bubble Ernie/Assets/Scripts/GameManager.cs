@@ -11,8 +11,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameEvent onTimerUpdate;
     [SerializeField] private GameEvent onGamePause;
     [SerializeField] private GameEvent onGameStart;
+    [SerializeField] private GameEvent onGameResume;
     private int mainSceneID = 0;
     private int menuSceneID = 1;
+
+    private bool isPause = false;
 
     private void Awake()
     {
@@ -36,7 +39,16 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Pause();
+            if (!isPause)
+            {
+                isPause = true;
+                Pause();
+            }
+            else if (isPause) {
+                isPause = false;
+                Resume();
+            }
+            
         }
     }
 
@@ -61,7 +73,12 @@ public class GameManager : MonoBehaviour
 
     public void Pause()
     {
-        onGamePause.Invoke();
+        onGamePause.Invoke(); 
+    }
+
+    public void Resume()
+    {
+        onGameResume.Invoke(); 
     }
 
     public void GameOver()
