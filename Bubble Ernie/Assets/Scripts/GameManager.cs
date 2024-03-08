@@ -10,10 +10,7 @@ public class GameManager : MonoBehaviour
     public float TimeRemaining => timeRemaining;
     [SerializeField] private GameEvent onTimerUpdate;
     [SerializeField] private GameEvent onGamePause;
-    [SerializeField] private GameEvent onGameStart;
     [SerializeField] private GameEvent onGameResume;
-    private int mainSceneID = 0;
-    private int menuSceneID = 1;
 
     private bool isPause = false;
 
@@ -22,17 +19,13 @@ public class GameManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(this);
         }
-    }
 
-    private void Start()
-    {
-        gameplayTime = 120;
-        StartCoroutine(GameplayCountdown());
     }
 
     public void Update()
@@ -66,8 +59,7 @@ public class GameManager : MonoBehaviour
 
     public void InitGame()
     {
-        SceneManager.LoadScene(mainSceneID);
-        onGameStart.Invoke();
+        gameplayTime = 150;
         StartCoroutine(GameplayCountdown());
     }
 

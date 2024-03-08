@@ -32,6 +32,10 @@ public class LevelLoader : MonoBehaviour
         yield return new WaitForSeconds(1);
         SceneManager.LoadSceneAsync(buildIndex);
         transitions.SetTrigger("Start");
+        if (buildIndex == 1) 
+        {
+            GameManager.Instance.InitGame();
+        }  
     }
 
 }
