@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 10
-  _jumpForce: 2
+  _jumpForce: 3
   _groundCheck: {fileID: 4447740533304798134}
   _groundRadius: 0.2
   _whatIsGround:

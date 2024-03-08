@@ -46,5 +46,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onTimerUpdate: {fileID: 11400000, guid: bc3a9ace85440264ba13284a9e2c19b2, type: 2}
   onGamePause: {fileID: 11400000, guid: 78dcb0274a41d6b4c883708dbcf9859a, type: 2}
-  onGameStart: {fileID: 11400000, guid: cf4cad17064119348b7332f66146e0c0, type: 2}
   onGameResume: {fileID: 11400000, guid: ba6077adf6758cc47bdb492514374e89, type: 2}
+  onLoseGame: {fileID: 11400000, guid: 3914b74dbfc15c34c8d9deb9a9cc7d39, type: 2}

@@ -1,8 +1,5 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.InputManagerEntry;
 
 public class PlayerController : MonoBehaviour
 {
@@ -37,7 +34,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         _horizontalInput = Input.GetAxis("Horizontal");
-        if (Input.GetKeyDown(KeyCode.UpArrow) == true && _hasJumped == false)
+        if (Input.GetKeyDown(KeyCode.Space) == true && _hasJumped == false)
             _hasJumped = true;
     }
 
