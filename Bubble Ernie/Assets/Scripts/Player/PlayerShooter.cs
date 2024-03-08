@@ -24,7 +24,7 @@ public class PlayerShooter : MonoBehaviour
         {
             firingTimer = 0.0f;
         }
-        if (Input.GetKeyDown(KeyCode.Space) && firingTimer == 0.0f)
+        if (Input.GetMouseButtonDown(0) && firingTimer == 0.0f)
         {
             OnShot?.Invoke();
             GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);

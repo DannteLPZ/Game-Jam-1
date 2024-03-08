@@ -9,6 +9,8 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private int _maxHealth;
 
     [SerializeField] private GameEvent healEvent;
+    [SerializeField] private GameEvent gameLoseEvent;
+
     private int _currentHealth;
     public int CurrentHealth => _currentHealth;
 
@@ -28,6 +30,19 @@ public class PlayerHealth : MonoBehaviour
         if(amount < 0) OnDamaged?.Invoke();
         if (amount > 0) OnHealed?.Invoke();
         healEvent.Invoke();
-        if(_currentHealth < 1) OnDeath?.Invoke();
+        if(_currentHealth < 1)
+        {
+            AudioManager.Instance.Stop("SFX_PlayerJump");
+            AudioManager.Instance.Stop("SFX_PlayerRun");
+            Time.timeScale = 0.0f;
+            OnDeath?.Invoke();
+            StartCoroutine(GameLoseEvent());
+        }
+    }
+
+    private IEnumerator GameLoseEvent()
+    {
+        yield return new WaitForSecondsRealtime(2.0f);
+        gameLoseEvent.Invoke();
     }
 }

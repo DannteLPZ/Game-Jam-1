@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameEvent onTimerUpdate;
     [SerializeField] private GameEvent onGamePause;
     [SerializeField] private GameEvent onGameResume;
+    [SerializeField] private GameEvent onLoseGame;
 
     private bool isPause = false;
 
@@ -53,7 +54,11 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(1f);
             timeRemaining--;
             onTimerUpdate.Invoke();
-            //Debug.Log(timeRemaining);
+            if (timeRemaining < 1)
+            {
+                Time.timeScale = 0.0f;
+                onLoseGame.Invoke();
+            } 
         }
     }
 
@@ -66,7 +71,6 @@ public class GameManager : MonoBehaviour
 
     public void Pause()
     {
-        AudioManager.Instance.Stop("SFX_PlayerJump");
         Time.timeScale = 0.0f;
         onGamePause.Invoke(); 
     }
