@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(1f);
             timeRemaining--;
             onTimerUpdate.Invoke();
-            Debug.Log(timeRemaining);
+            //Debug.Log(timeRemaining);
         }
     }
 
