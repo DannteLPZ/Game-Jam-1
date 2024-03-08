@@ -14,18 +14,19 @@ public class PlayerAnimation : MonoBehaviour
 
     [SerializeField] private PlayerController _playerController;
     [SerializeField] private PlayerShooter _playerShooter;
+    [SerializeField] private PlayerHealth _playerHealth;
     [SerializeField] private Rigidbody2D _playerRb;
     [SerializeField] private SpriteRenderer _spriteRenderer;
 
     private Animator _playerAnimator;
 
-    private void Start() => _playerAnimator = GetComponent<Animator>();
-
-    private void OnEnable()
+    private void Start()
     {
+        _playerAnimator = GetComponent<Animator>();
         _playerController.OnJumped += AnimateJump;
         _playerController.OnLanded += AnimateLand;
         _playerShooter.OnShot += AnimateShot;
+        _playerHealth.OnDeath += AnimateDeath;
     }
 
     private void OnDisable()
@@ -33,6 +34,7 @@ public class PlayerAnimation : MonoBehaviour
         _playerController.OnJumped -= AnimateJump;
         _playerController.OnLanded -= AnimateLand;
         _playerShooter.OnShot -= AnimateShot;
+        _playerHealth.OnDeath -= AnimateDeath;
     }
     private void Update()
     {
@@ -45,6 +47,5 @@ public class PlayerAnimation : MonoBehaviour
     private void AnimateJump() => _playerAnimator.SetTrigger(JUMPED);
     private void AnimateLand() => _playerAnimator.SetTrigger(LANDED);
     private void AnimateShot() => _playerAnimator.SetTrigger(SHOT);
-
     public void AnimateDeath() => _playerAnimator.SetBool(DEATH, true);
 }

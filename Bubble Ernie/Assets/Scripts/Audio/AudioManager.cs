@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    public static AudioManager instance;
+    [SerializeField] private AudioMixerGroup _musicGroup;
+    [SerializeField] private AudioMixerGroup _sfxGroup;
+    public static AudioManager Instance;
 
     public Sounds[] sounds;
 
+
     private void Awake()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
         }
         else
         {
@@ -25,7 +28,10 @@ public class AudioManager : MonoBehaviour
         {
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
-            s.source.outputAudioMixerGroup = s.output;
+            if(s.name.StartsWith("M_") == true)
+                s.source.outputAudioMixerGroup = _musicGroup;
+            else if (s.name.StartsWith("SFX_") == true)
+                s.source.outputAudioMixerGroup = _sfxGroup;
 
             s.source.volume = s.volume;
             s.source.pitch = s.pitch;
@@ -35,7 +41,7 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        Play("Theme");
+        Play("M_Theme");
     }
 
     /// <summary>
@@ -51,6 +57,17 @@ public class AudioManager : MonoBehaviour
             return;
         }
         s.source.Play();
+    }
+
+    public void Stop(string name)
+    {
+        Sounds s = Array.Find(sounds, sound => sound.name == name);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound not found: " + name);
+            return;
+        }
+        s.source.Stop();
     }
 
 }

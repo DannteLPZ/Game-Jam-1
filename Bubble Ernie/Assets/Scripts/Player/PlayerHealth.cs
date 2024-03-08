@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,10 @@ public class PlayerHealth : MonoBehaviour
     private int _currentHealth;
     public int CurrentHealth => _currentHealth;
 
+    public event Action OnDamaged;
+    public event Action OnHealed;
+    public event Action OnDeath;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +25,9 @@ public class PlayerHealth : MonoBehaviour
     public void Heal(int amount)
     {
         _currentHealth += amount;
+        if(amount < 0) OnDamaged?.Invoke();
+        if (amount > 0) OnHealed?.Invoke();
         healEvent.Invoke();
+        if(_currentHealth < 1) OnDeath?.Invoke();
     }
 }

@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 4447740532719881836}
   - component: {fileID: 4447740532719881839}
   - component: {fileID: 7651187500612075534}
+  - component: {fileID: 4179075308619243135}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -155,6 +156,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 3
   healEvent: {fileID: 11400000, guid: b22bbc4806ad9ef40a4cba6e0bca646f, type: 2}
+--- !u!114 &4179075308619243135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4447740532719881833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b8bcb6e982b4bd4ea5d738e97ef4281, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerController: {fileID: 4447740532719881836}
+  _playerShooter: {fileID: 4447740532719881839}
+  _playerHealth: {fileID: 7651187500612075534}
+  _playerRb: {fileID: 4447740532719881826}
 --- !u!1 &4447740533304798129
 GameObject:
   m_ObjectHideFlags: 0
@@ -307,5 +324,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerController: {fileID: 4447740532719881836}
   _playerShooter: {fileID: 4447740532719881839}
+  _playerHealth: {fileID: 7651187500612075534}
   _playerRb: {fileID: 4447740532719881826}
   _spriteRenderer: {fileID: 4447740533505477575}
