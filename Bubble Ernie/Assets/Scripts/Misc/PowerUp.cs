@@ -17,14 +17,18 @@ public class PowerUp : MonoBehaviour, IPickable
 
     public void TakeIt()
     {
-        Destroy(gameObject);
         if (type == PowerUpType.Speed)
+        {
+            AudioManager.Instance.Play("SFX_Powerup");
+            transform.GetChild(0).gameObject.SetActive(false);
             StartCoroutine(SpeedPowerUp());
+        }
         if (type == PowerUpType.Life) { 
             if (playerHealth.CurrentHealth < 3)
             {
                 playerHealth.Heal(1);
                 UpdateLife.Invoke();
+                Destroy(gameObject);
             }
         }
     }
@@ -37,8 +41,9 @@ public class PowerUp : MonoBehaviour, IPickable
 
     IEnumerator SpeedPowerUp()
     {
-        playerController.Speed += 5.0f;
-        yield return new WaitForSeconds(5.0f);
-        playerController.Speed -= 5.0f;
+        playerController.Speed += 8.0f;
+        yield return new WaitForSeconds(10.0f);
+        playerController.Speed -= 8.0f;
+        Destroy(gameObject);
     }
 }

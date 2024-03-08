@@ -11,6 +11,7 @@ public class DeathZone : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             gameOverEvent.Invoke();
+            AudioManager.Instance.Play("SFX_PlayerDied");
         }
     }
 }
