@@ -1,0 +1,97 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5161096836994448212
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5161096836994448214}
+  - component: {fileID: 5161096836994448213}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5161096836994448214
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5161096836994448212}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5161096836994448213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5161096836994448212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab00f37dd9ad5744db77d4faf9b8ff0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _musicGroup: {fileID: -8132847689291100551, guid: d06f83da20f861f4492411203a98f260, type: 2}
+  _sfxGroup: {fileID: -3843940971447492918, guid: d06f83da20f861f4492411203a98f260, type: 2}
+  sounds:
+  - name: M_Theme
+    clip: {fileID: 8300000, guid: 58d6a3a8d728e2242867fcd3e317e477, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: SFX_PlayerRun
+    clip: {fileID: 8300000, guid: fe5eefe390c6e02419365a2b6f382817, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: SFX_PlayerJump
+    clip: {fileID: 8300000, guid: 4877fb146713892419e8d2e1c7a09f8d, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: SFX_PlayerLand
+    clip: {fileID: 8300000, guid: 50b8ca4492aa58e4d8fa683fabc6ed5c, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: SFX_PlayerShot
+    clip: {fileID: 8300000, guid: f223c603580d3144aa71e974975cdda1, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: SFX_PlayerHit
+    clip: {fileID: 8300000, guid: e11d3cc25bf08b542b706212f85861ef, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: SFX_PlayerHealed
+    clip: {fileID: 8300000, guid: 29d820e0228dd9446b99b79188cea6a2, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: SFX_PlayerDied
+    clip: {fileID: 8300000, guid: d0b7a21779c2a454cbd273f0dff71b8b, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}

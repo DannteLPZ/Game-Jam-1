@@ -10,32 +10,38 @@ public class GameManager : MonoBehaviour
     public float TimeRemaining => timeRemaining;
     [SerializeField] private GameEvent onTimerUpdate;
     [SerializeField] private GameEvent onGamePause;
-    [SerializeField] private GameEvent onGameStart;
-    private int mainSceneID = 0;
-    private int menuSceneID = 1;
+    [SerializeField] private GameEvent onGameResume;
+
+    private bool isPause = false;
 
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(this);
         }
-    }
 
-    private void Start()
-    {
-        gameplayTime = 120;
     }
 
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Pause();
+            if (!isPause)
+            {
+                isPause = true;
+                Pause();
+            }
+            else if (isPause) {
+                isPause = false;
+                Resume();
+            }
+            
         }
     }
 
@@ -47,20 +53,28 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(1f);
             timeRemaining--;
             onTimerUpdate.Invoke();
-            Debug.Log(timeRemaining);
+            //Debug.Log(timeRemaining);
         }
     }
 
     public void InitGame()
     {
-        SceneManager.LoadScene(mainSceneID);
-        onGameStart.Invoke();
+        StopAllCoroutines();
+        gameplayTime = 150;
         StartCoroutine(GameplayCountdown());
     }
 
     public void Pause()
     {
-        onGamePause.Invoke();
+        AudioManager.Instance.Stop("SFX_PlayerJump");
+        Time.timeScale = 0.0f;
+        onGamePause.Invoke(); 
+    }
+
+    public void Resume()
+    {
+        Time.timeScale = 1.0f;
+        onGameResume.Invoke(); 
     }
 
     public void GameOver()
