@@ -11,6 +11,9 @@ public class WinGame : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             GameWinEvent.Invoke();
+            AudioManager.Instance.Stop("SFX_PlayerJump");
+            AudioManager.Instance.Stop("SFX_PlayerRun");
+            Time.timeScale = 0.0f;
         }
     }
 }
