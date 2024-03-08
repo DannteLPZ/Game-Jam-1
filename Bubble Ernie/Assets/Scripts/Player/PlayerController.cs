@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
     {
         if (_hasJumped == true && isOnGround == true)
         {
-            _playerRigidBody.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
+            _playerRigidBody.AddForce(Vector2.up * (_jumpForce - _playerRigidBody.velocity.y), ForceMode2D.Impulse);
             OnJumped?.Invoke();
         }
         float horizontalForce = (_speed * _horizontalInput) - _playerRigidBody.velocity.x;

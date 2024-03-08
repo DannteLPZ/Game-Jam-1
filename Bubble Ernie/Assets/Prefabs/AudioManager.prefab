@@ -84,7 +84,7 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: SFX_PlayerHealed
+  - name: SFX_PlayerHeal
     clip: {fileID: 8300000, guid: 29d820e0228dd9446b99b79188cea6a2, type: 3}
     volume: 0.5
     pitch: 1
