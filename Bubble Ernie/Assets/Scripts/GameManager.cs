@@ -59,17 +59,21 @@ public class GameManager : MonoBehaviour
 
     public void InitGame()
     {
+        StopAllCoroutines();
         gameplayTime = 150;
         StartCoroutine(GameplayCountdown());
     }
 
     public void Pause()
     {
+        AudioManager.Instance.Stop("SFX_PlayerJump");
+        Time.timeScale = 0.0f;
         onGamePause.Invoke(); 
     }
 
     public void Resume()
     {
+        Time.timeScale = 1.0f;
         onGameResume.Invoke(); 
     }
 

@@ -29,7 +29,8 @@ public class LevelLoader : MonoBehaviour
     private IEnumerator LoadLevelCoroutine(int buildIndex)
     {
         transitions.SetTrigger("End");
-        yield return new WaitForSeconds(1);
+        GameManager.Instance.Resume();
+        yield return new WaitForSecondsRealtime(1.0f);
         SceneManager.LoadSceneAsync(buildIndex);
         transitions.SetTrigger("Start");
         if (buildIndex == 1) 
