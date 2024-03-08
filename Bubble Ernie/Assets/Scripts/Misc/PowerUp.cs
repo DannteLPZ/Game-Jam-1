@@ -19,7 +19,10 @@ public class PowerUp : MonoBehaviour, IPickable
     {
         Destroy(gameObject);
         if (type == PowerUpType.Speed)
+        {
+            AudioManager.Instance.Play("SFX_Powerup");
             StartCoroutine(SpeedPowerUp());
+        }
         if (type == PowerUpType.Life) { 
             if (playerHealth.CurrentHealth < 3)
             {

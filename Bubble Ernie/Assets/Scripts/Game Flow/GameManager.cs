@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameEvent onLoseGame;
 
     private bool isPause = false;
-
+    private bool isRunningOut;
     private void Awake()
     {
         if (Instance == null)
@@ -54,9 +54,15 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(1f);
             timeRemaining--;
             onTimerUpdate.Invoke();
+            if (timeRemaining < 15 && isRunningOut == false)
+            {
+                AudioManager.Instance.Play("SFX_TimeOut");
+                isRunningOut = true;
+            }
             if (timeRemaining < 1)
             {
                 Time.timeScale = 0.0f;
+                AudioManager.Instance.Stop("SFX_TimeOut");
                 onLoseGame.Invoke();
             } 
         }

@@ -13,6 +13,7 @@ public class WinGame : MonoBehaviour
             GameWinEvent.Invoke();
             AudioManager.Instance.Stop("SFX_PlayerJump");
             AudioManager.Instance.Stop("SFX_PlayerRun");
+            AudioManager.Instance.Stop("SFX_TimeOut");
             Time.timeScale = 0.0f;
         }
     }
