@@ -17,4 +17,6 @@ public class UIManager : MonoBehaviour
         canvasGroup.interactable = false;
         canvasGroup.blocksRaycasts = false;
     }
+
+    public void PlayAudio(string audioName) => AudioManager.Instance.Play(audioName);
 }
